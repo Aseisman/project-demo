@@ -42,7 +42,7 @@
       </draggable>
     </div>
     <div style="margin-top: 20px">
-      <el-button>取 消</el-button>
+      <!-- <el-button>取 消</el-button> -->
       <el-button type="primary" @click="saveOptions">确 定</el-button>
     </div>
   </div>

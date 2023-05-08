@@ -47,7 +47,7 @@
     <el-dialog
       title="自定义列表显示"
       :visible.sync="dialogVisible"
-      width="25%"
+      width="450px"
       top="0"
     >
       <FilterColumnWin :originData="displaySetting" @save="onFliterSave" />
