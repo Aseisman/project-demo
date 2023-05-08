@@ -1,0 +1,122 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table {
+  color: #333;
+  font: normal 12px PingFangSC-Regular, Microsoft YaHei, Hiragino Sans GB,
+    sans-serif;
+  font-style: normal;
+  font-variant-caps: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-variant-east-asian: normal;
+  font-variant-alternates: normal;
+  font-kerning: auto;
+  font-optical-sizing: auto;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: PingFangSC-Regular, "Microsoft YaHei", "Hiragino Sans GB",
+    sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+body {
+  margin: 0;
+}
+/* 由于大多数人是 PC 端用户，PC 是 webkit 的，可以修改全局滚动条提高体验*/
+body ::-webkit-scrollbar {
+  width: 15px;
+  height: 7px;
+}
+
+body ::-webkit-scrollbar-thumb:vertical {
+  border-radius: 10px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  box-shadow: 7px 0 0 #c3c3c3 inset;
+  transition: background-color 0.3s;
+}
+
+body ::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 6px;
+  background-color: #c3c3c3;
+  transition: background-color 0.3s;
+}
+
+body ::-webkit-scrollbar-thumb:hover {
+  box-shadow: 7px 0 0 #bbb inset;
+}
+.filter-toolbar {
+  border: none !important;
+}
+
+.filter-label {
+  word-break: break-all;
+  white-space: pre-wrap !important;
+  margin-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  overflow: hidden;
+}
+
+.filter-label .item {
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 300px;
+  padding: 0 32px 0 8px;
+  height: 28px;
+  line-height: 26px;
+  border-radius: 3px;
+  margin: 2px 8px 2px 0;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+
+.filter-label .item:hover {
+  border-color: #5383ed;
+}
+.filter-label label {
+  color: #666;
+}
+
+.filter-label span {
+  white-space: nowrap;
+}
+
+.filter-label .value {
+  color: #000;
+  margin-left: 4px;
+}
+
+.filter-label .item:hover .value {
+  color: #5383ed;
+}
+
+.filter-label .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  vertical-align: middle;
+  margin-left: 10px;
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  background: url("~@/images/icon-16px/shanchu.png") no-repeat 5px 5px;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.filter-label .item:hover .close {
+  background: url("~@/images/icon-16px/shanchu_baise.png") no-repeat 5px 5px;
+  background-size: 16px;
+  background-color: #5383ed;
+}

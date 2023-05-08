@@ -1,0 +1,6 @@
+.el-date-editor.el-input--prefix .el-input__inner {
+  padding-left: 30px !important;
+}
+.el-date-editor.el-input--suffix .el-input__inner {
+  padding-right: 30px !important;
+}

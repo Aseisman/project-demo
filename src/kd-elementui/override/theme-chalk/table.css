@@ -1,0 +1,3 @@
+.el-table--enable-row-transition .el-table__body td.el-table__cell {
+  transition:none
+}

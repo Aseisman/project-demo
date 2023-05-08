@@ -1,0 +1,26 @@
+.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+  background-color: #f1f1f5 !important;
+}
+
+.is-scrolling-middle .kd-table-cell-fix-left-last,
+.is-scrolling-right .kd-table-cell-fix-left-last{
+  overflow: initial !important;
+}
+.is-scrolling-middle .kd-table-cell-fix-left-last::after,
+.is-scrolling-right .kd-table-cell-fix-left-last::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -1px;
+  width: 30px;
+  transform: translateX(100%);
+  transition: box-shadow 0.3s;
+  content: '';
+  pointer-events: none;
+  box-shadow: inset 10px 0 8px -8px #4242420f;
+}
+
+.el-input > input {
+  height: 32px !important;
+  border-radius: 4px;
+}
