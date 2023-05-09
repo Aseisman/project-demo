@@ -60,19 +60,19 @@ export default function useCanvas(myCanvasRef: Ref<HTMLCanvasElement>) {
 
   let lineWidth = ref("10"); //画笔宽度
   let strokeColor = ref("rgba(0,0,0,0.6)"); // 画笔颜色
-  const stack: Array<Array<PathProp>> = []; // 绘画堆栈 存放path数组
+  const stack: Ref<Array<Array<PathProp>>> = ref([]); // 绘画堆栈 存放path数组
   
   const revoke = () => {
-    stack.pop();
+    stack.value.pop();
     drawLine();
   };
   const clear = () => {
-    stack.splice(0);
+    stack.value.splice(0);
     clearRect();
   };
   const drawLine = () => {
     clearRect();
-    stack.forEach((path: PathProp[]) => {
+    stack.value.forEach((path: PathProp[]) => {
       path.forEach((value, index, array) => {
         if (index === 0) {
           // 该路径样式
@@ -108,7 +108,7 @@ export default function useCanvas(myCanvasRef: Ref<HTMLCanvasElement>) {
       y = e.clientY;
     path.push({ width: lineWidth.value, color: strokeColor.value });
     path.push({ x, y });
-    stack.push(path);
+    stack.value.push(path);
     drawLine();
     myCanvasRef.value.addEventListener("mousemove", handleMousemove, {
       passive: true,
@@ -140,7 +140,7 @@ export default function useCanvas(myCanvasRef: Ref<HTMLCanvasElement>) {
       y = e.touches[0].clientY;
     path.push({ width: lineWidth.value, color: strokeColor.value });
     path.push({ x, y });
-    stack.push(path);
+    stack.value.push(path);
     drawLine();
     myCanvasRef.value.addEventListener("touchmove", handleTouchmove);
     myCanvasRef.value.addEventListener("touchend", handleTouchend);
@@ -173,7 +173,7 @@ export default function useCanvas(myCanvasRef: Ref<HTMLCanvasElement>) {
   };
 
   const play = () => {
-    const taskList = stack.flat(); //扁平化
+    const taskList = stack.value.flat(); //扁平化
     const totalStep = taskList.length;
     let currentStep = 0;
     const animate = () => {
@@ -235,5 +235,6 @@ export default function useCanvas(myCanvasRef: Ref<HTMLCanvasElement>) {
     clear,
     downloadPng,
     play,
+    stack,
   };
 }

@@ -12,10 +12,12 @@ const {
   clear,
   downloadPng,
   play,
+  stack,
 } = useCanvas(myCanvasRef);
 </script>
 
 <template>
+  <div v-show="!stack.length" class="background-text">开始您的绘画吧！</div>
   <canvas
     id="myCanvas"
     ref="myCanvasRef"
@@ -40,5 +42,12 @@ body {
 }
 #myCanvas {
   cursor: crosshair;
+}
+.background-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #818181;
+  user-select: none;
 }
 </style>
