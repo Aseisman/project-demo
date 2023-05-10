@@ -2805,11 +2805,6 @@
     "commander" "^2.20.0"
     "source-map-support" "~0.5.20"
 
-"throttle-and-debounce@^3.1.4":
-  "integrity" "sha512-erlEDSjt3d2HKvxyTdJSXU2ScEiUiws4UsMwt6t5Uzm5iX7fL17DyJLTGGVBOlsds6Cbw1M5QjBk5kqJfIHH+w=="
-  "resolved" "https://registry.npmjs.org/throttle-and-debounce/-/throttle-and-debounce-3.1.4.tgz"
-  "version" "3.1.4"
-
 "through2@^2.0.0":
   "integrity" "sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ=="
   "resolved" "https://registry.npmjs.org/through2/-/through2-2.0.5.tgz"

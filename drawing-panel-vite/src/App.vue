@@ -49,5 +49,6 @@ body {
   left: 50%;
   color: #818181;
   user-select: none;
+  transform: translate(-50%, -50%);
 }
 </style>
