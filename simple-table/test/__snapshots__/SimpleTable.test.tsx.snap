@@ -1,0 +1,1326 @@
+// Vitest Snapshot v1
+
+exports[`SimpleTable > check pagination as false in table 1`] = `
+"<table style=\\"\\">
+  <div style=\\"position: relative; min-height: 300px;\\">
+    <div>
+      <thead>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 100px;\\">
+            <div>名字</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 200px;\\">
+            <div>价格</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 300px;\\">
+            <div>数量</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px;\\">
+            <div>年份</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+      </thead>
+      <tbody class=\\"tbody-test\\">
+        <tr>
+          <td>
+            <div>
+              <div>测试5</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>123</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">1</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试11</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>134</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试12</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>144</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试12</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>144</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试13</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>155</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试13</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>155</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试14</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>166</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试14</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>166</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试15</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>177</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试15</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>177</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试10</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>197</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试9</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>198</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试17</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>199</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试17</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>199</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试6</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">21</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试7</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">11</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试8</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试19</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试20</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试21</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试19</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试20</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试21</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>200</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试18</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>211</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试18</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>211</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试4</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>234</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">77</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试2</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>334</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">12</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试1</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>567</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">32</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试3</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>755</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">34</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <td colspan=\\"4\\" style=\\"\\"></td>
+    </div>
+  </div>
+</table>"
+`;
+
+exports[`SimpleTable > check pagination in table 1`] = `
+"<table style=\\"\\">
+  <div style=\\"position: relative; min-height: 300px;\\">
+    <div>
+      <thead>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 100px;\\">
+            <div>名字</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 200px;\\">
+            <div>价格</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 300px;\\">
+            <div>数量</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px;\\">
+            <div>年份</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+      </thead>
+      <tbody class=\\"tbody-test\\">
+        <tr>
+          <td>
+            <div>
+              <div>测试13</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>155</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试14</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>166</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试14</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>166</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试15</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>177</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试15</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>177</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <td colspan=\\"4\\" style=\\"\\">
+        <div class=\\"pagination-box\\">
+          <div style=\\"margin-right: 8px;\\">共：10条数据</div>
+          <div class=\\"pagination-pre\\" id=\\"pre-btn\\">后退</div>
+          <div class=\\"pagination-number\\">1</div>
+          <div class=\\"pagination-number-active\\">2</div>
+          <div class=\\"pagination-aft-disabled\\" id=\\"next-btn\\">前进</div>
+          <div>跳至 <input type=\\"text\\">页</div>
+        </div>
+      </td>
+    </div>
+  </div>
+</table>"
+`;
+
+exports[`SimpleTable > check pagination in table 2`] = `
+"<table style=\\"\\">
+  <div style=\\"position: relative; min-height: 300px;\\">
+    <div>
+      <thead>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 100px;\\">
+            <div>名字</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 200px;\\">
+            <div>价格</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 300px;\\">
+            <div>数量</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px;\\">
+            <div>年份</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+      </thead>
+      <tbody class=\\"tbody-test\\">
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试10</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>197</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试9</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>198</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试17</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>199</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <td colspan=\\"4\\" style=\\"\\">
+        <div class=\\"pagination-box\\">
+          <div style=\\"margin-right: 8px;\\">共：10条数据</div>
+          <div class=\\"pagination-pre\\" id=\\"pre-btn\\">后退</div>
+          <div class=\\"pagination-number\\">1</div>
+          <div class=\\"pagination-number\\">2</div>
+          <div class=\\"pagination-aft-disabled\\" id=\\"next-btn\\">前进</div>
+          <div>跳至 <input type=\\"text\\">页</div>
+        </div>
+      </td>
+    </div>
+  </div>
+</table>"
+`;
+
+exports[`SimpleTable > check pagination in table 3`] = `
+"<table style=\\"\\">
+  <div style=\\"position: relative; min-height: 300px;\\">
+    <div>
+      <thead>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 100px;\\">
+            <div>名字</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 200px;\\">
+            <div>价格</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 300px;\\">
+            <div>数量</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px;\\">
+            <div>年份</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+      </thead>
+      <tbody class=\\"tbody-test\\">
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试10</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>197</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试9</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>198</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试17</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>199</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <td colspan=\\"4\\" style=\\"\\">
+        <div class=\\"pagination-box\\">
+          <div style=\\"margin-right: 8px;\\">共：10条数据</div>
+          <div class=\\"pagination-pre\\" id=\\"pre-btn\\">后退</div>
+          <div class=\\"pagination-number\\">1</div>
+          <div class=\\"pagination-number\\">2</div>
+          <div class=\\"pagination-aft-disabled\\" id=\\"next-btn\\">前进</div>
+          <div>跳至 <input type=\\"text\\">页</div>
+        </div>
+      </td>
+    </div>
+  </div>
+</table>"
+`;
+
+exports[`SimpleTable > check pagination in table 4`] = `
+"<table style=\\"\\">
+  <div style=\\"position: relative; min-height: 300px;\\">
+    <div>
+      <thead>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 100px;\\">
+            <div>名字</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 200px;\\">
+            <div>价格</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 300px;\\">
+            <div>数量</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px;\\">
+            <div>年份</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+      </thead>
+      <tbody class=\\"tbody-test\\">
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试16</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>188</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试10</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>197</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试9</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>198</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div>测试17</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>199</div>
+            </div>
+          </td>
+          <td>
+            <div style=\\"background: grey; color: white;\\">20</div>
+          </td>
+          <td>
+            <div>
+              <div>1970-01-01 08:00</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <td colspan=\\"4\\" style=\\"\\">
+        <div class=\\"pagination-box\\">
+          <div style=\\"margin-right: 8px;\\">共：10条数据</div>
+          <div class=\\"pagination-pre\\" id=\\"pre-btn\\">后退</div>
+          <div class=\\"pagination-number\\">1</div>
+          <div class=\\"pagination-number\\">2</div>
+          <div class=\\"pagination-aft-disabled\\" id=\\"next-btn\\">前进</div>
+          <div>跳至 <input type=\\"text\\">页</div>
+        </div>
+      </td>
+    </div>
+  </div>
+</table>"
+`;
+
+exports[`SimpleTable > mount Loading 1`] = `
+"<table style=\\"\\">
+  <loading-stub loading=\\"true\\"></loading-stub>
+</table>"
+`;
+
+exports[`SimpleTable > mount Loading 2`] = `
+"<div style=\\"position: relative; min-height: 300px;\\">
+  <div class=\\"loading\\">加载中</div>
+  <div></div>
+</div>"
+`;
+
+exports[`SimpleTable > mount component 1`] = `
+"<table style=\\"\\">
+  <loading-stub loading=\\"false\\"></loading-stub>
+</table>"
+`;
+
+exports[`SimpleTable > mount component with columns 1`] = `
+"<table style=\\"\\">
+  <loading-stub loading=\\"false\\"></loading-stub>
+</table>"
+`;
+
+exports[`SimpleTable > mount component with data 1`] = `
+"<table style=\\"\\">
+  <loading-stub loading=\\"false\\"></loading-stub>
+</table>"
+`;
+
+exports[`SimpleTable > nodata in body 1`] = `
+"<table style=\\"\\">
+  <div style=\\"position: relative; min-height: 300px;\\">
+    <div>
+      <thead>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 100px;\\">
+            <div>名字</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 200px;\\">
+            <div>价格</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px; width: 300px;\\">
+            <div>数量</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+        <td>
+          <div class=\\"header-item\\" style=\\"display: flex; align-items: center; position: relative; padding: 0px 8px;\\">
+            <div>年份</div>
+            <div style=\\"position: absolute; right: 8px;\\"></div>
+          </div>
+        </td>
+      </thead>
+      <tbody class=\\"tbody-test\\">
+        <td style=\\"min-height: 300px;\\" colspan=\\"4\\">没有数据哦</td>
+      </tbody>
+      <td colspan=\\"4\\" style=\\"\\">
+        <div class=\\"pagination-box\\">
+          <div style=\\"margin-right: 8px;\\">共：0条数据</div>
+          <div class=\\"pagination-pre-disabled\\" id=\\"pre-btn\\">后退</div>
+          <div class=\\"pagination-aft-disabled\\" id=\\"next-btn\\">前进</div>
+          <div>跳至 <input type=\\"text\\">页</div>
+        </div>
+      </td>
+    </div>
+  </div>
+</table>"
+`;
+
+exports[`SimpleTable > set num in paginations' input 1`] = `"expected is not a function"`;
