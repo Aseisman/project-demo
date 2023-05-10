@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "element-plus": "^2.2.27",
-    "throttle-and-debounce": "^3.1.4",
     "vue": "^3.2.45"
   },
   "devDependencies": {
