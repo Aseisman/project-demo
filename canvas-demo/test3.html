@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const text = "Hello, world!\nThis is a test.\n";
+
+    // 绘制文本到 Canvas 中
+    ctx.font = "24px Arial";
+    ctx.textBaseline = "top";
+    ctx.fillText(text, 10, 10);
+
+    // 保存每个字符的位置和每行文本的高度
+    const positions = [];
+    const lineHeight = 30;
+    let x = 10,
+      y = lineHeight;
+    for (let i = 0; i < text.length; i++) {
+      const char = text.charAt(i);
+      const width = ctx.measureText(char).width;
+      if (char === "\n") {
+        x = 10;
+        y += lineHeight;
+      } else {
+        positions.push({ char, x, y, width });
+        x += width;
+      }
+    }
+    const lineHeights = new Array(Math.ceil(y / lineHeight)).fill(lineHeight);
+
+    // 监听鼠标事件，获取选中区域
+    let isSelecting = false;
+    let startX, startY, endX, endY;
+    canvas.addEventListener("mousedown", (e) => {
+      isSelecting = true;
+      startX = e.offsetX;
+      startY = e.offsetY;
+    });
+    canvas.addEventListener("mousemove", (e) => {
+      if (isSelecting) {
+        endX = e.offsetX;
+        endY = e.offsetY;
+        drawSelectionBox();
+      }
+    });
+    canvas.addEventListener("mouseup", (e) => {
+      isSelecting = false;
+      endX = e.offsetX;
+      endY = e.offsetY;
+      drawSelectionBox();
+      copySelectedText();
+    });
+
+    // 绘制选中区域的矩形框
+    function drawSelectionBox() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillText(text, 10, 10);
+      ctx.fillStyle = "rgba(0, 0, 255, 0.2)";
+      const minX = Math.min(startX, endX);
+      const maxX = Math.max(startX, endX);
+      const minY = Math.min(startY, endY);
+      const maxY = Math.max(startY, endY);
+      ctx.fillRect(minX, minY, maxX - minX, maxY - minY);
+    }
+
+    // 复制选中的文本到剪贴板
+    function copySelectedText() {
+      const minX = Math.min(startX, endX);
+      const maxX = Math.max(startX, endX);
+      const minY = Math.min(startY, endY);
+      const maxY = Math.max(startY, endY);
+      let selectedText = "";
+      for (let i = 0; i < positions.length; i++) {
+        const { char, x, y, width } = positions[i];
+        if (
+          x + width >= minX &&
+          x <= maxX &&
+          y + lineHeight >= minY &&
+          y <= maxY
+        ) {
+          selectedText += char;
+          if (char === "\n") {
+            selectedText += "\r\n";
+          }
+        }
+      }
+      if (selectedText) {
+        navigator.clipboard.writeText(selectedText);
+      }
+    }
+  </script>
+</html>

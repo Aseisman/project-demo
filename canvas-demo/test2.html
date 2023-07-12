@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const text = "Hello, world!";
+
+    // 绘制文本到 Canvas 中
+    ctx.font = "24px Arial";
+    ctx.fillText(text, 10, 50);
+
+    // 保存每个字符的位置
+    const positions = [];
+    let x = 10;
+    for (let i = 0; i < text.length; i++) {
+      const char = text.charAt(i);
+      const width = ctx.measureText(char).width;
+      positions.push({ char, x, y: 50, width });
+      x += width;
+    }
+    let isSelecting = false; // 是否正在选中文本
+    let startX, startY, endX, endY; // 选中文本的起始和结束坐标
+
+    canvas.addEventListener("mousedown", (event) => {
+      isSelecting = true;
+      startX = endX = event.offsetX;
+      startY = endY = event.offsetY;
+    });
+
+    canvas.addEventListener("mousemove", (event) => {
+      if (isSelecting) {
+        endX = event.offsetX;
+        endY = event.offsetY;
+        drawSelection();
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      isSelecting = false;
+      copySelection();
+    });
+
+    function drawSelection() {
+      // 清空 Canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 绘制文本
+      ctx.font = "24px Arial";
+      ctx.fillText(text, 10, 50);
+
+      // 绘制选中的文本
+      const selectionWidth = endX - startX;
+      const selectionHeight = endY - startY;
+      ctx.fillStyle = "rgba(0, 0, 255, 0.2)";
+      ctx.fillRect(startX, startY, selectionWidth, selectionHeight);
+    }
+
+    function copySelection() {
+      // 计算选中的字符
+      const selectedChars = [];
+      for (const pos of positions) {
+        if (
+          pos.x + pos.width > startX &&
+          pos.x < endX &&
+          pos.y > startY &&
+          pos.y < endY
+        ) {
+          selectedChars.push(pos.char);
+        }
+      }
+
+      // 复制选中的文本到剪贴板
+      const text = selectedChars.join("");
+      navigator.clipboard.writeText(text);
+    }
+  </script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const text = "Hello, world!\nThis is a test.";
+    const fontSize = 20;
+    const lineHeight = 1.2 * fontSize;
+    let x = 10;
+    let y = 10;
+
+    const positions = [];
+
+    ctx.font = `${fontSize}px Arial`;
+    ctx.fillStyle = "black";
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const width = ctx.measureText(char).width;
+      if (char === "\n") {
+        y += lineHeight;
+      } else {
+        ctx.fillText(char, x, y);
+        positions.push({ char, x, y, width });
+        x += width;
+      }
+    }
+
+    let startX, startY, endX, endY;
+    let isSelecting = false;
+
+    canvas.addEventListener("mousedown", (event) => {
+      startX = event.offsetX;
+      startY = event.offsetY;
+      isSelecting = true;
+    });
+
+    canvas.addEventListener("mousemove", (event) => {
+      if (isSelecting) {
+        endX = event.offsetX;
+        endY = event.offsetY;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < positions.length; i++) {
+          const { char, x, y } = positions[i];
+          ctx.fillText(char, x, y);
+        }
+        ctx.fillStyle = "rgba(0, 0, 255, 0.2)";
+        ctx.fillRect(
+          Math.min(startX, endX),
+          Math.min(startY, endY),
+          Math.abs(endX - startX),
+          Math.abs(endY - startY)
+        );
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      if (isSelecting) {
+        isSelecting = false;
+        copySelectedText(startX, startY, endX, endY, positions, lineHeight);
+      }
+    });
+
+    function copySelectedText(
+      startX,
+      startY,
+      endX,
+      endY,
+      positions,
+      lineHeight
+    ) {
+      const minX = Math.min(startX, endX);
+      const maxX = Math.max(startX, endX);
+      const minY = Math.min(startY, endY);
+      const maxY = Math.max(startY, endY);
+      let selectedText = "";
+      for (let i = 0; i < positions.length; i++) {
+        const { char, x, y, width } = positions[i];
+        if (
+          x + width >= minX &&
+          x <= maxX &&
+          y + lineHeight >= minY &&
+          y <= maxY
+        ) {
+          selectedText += char;
+          if (char === "\n") {
+            selectedText += "\r\n";
+          }
+        }
+      }
+      if (selectedText) {
+        navigator.clipboard.writeText(selectedText);
+      }
+    }
+  </script>
+</html>
