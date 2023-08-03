@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.time();
+      let index = 1;
+      const arr1 = [],
+        arr2 = [],
+        arr3 = [];
+      for (let i = 0; i < 100000; i++) {
+        arr1.push({ value: index });
+        arr2.push({ value: index });
+        arr3.push({ value: index });
+        index++;
+      }
+      const worker = new Worker("./worker.js");
+      worker.postMessage(["start", arr1, arr2, arr3]);
+      worker.onmessage = (ev) => {
+        // to paint the echart
+        console.log(ev);
+        console.timeEnd();
+      };
+    </script>
+  </body>
+</html>
