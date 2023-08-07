@@ -1,2 +1,5 @@
 /// <reference types="vite/client" />
-declare module 'dplayer'
+declare class DPlayer{
+    constructor(obj:any);
+};
+declare var bodySegmentation

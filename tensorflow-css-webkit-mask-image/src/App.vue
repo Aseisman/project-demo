@@ -224,44 +224,43 @@ const playVideo = async (item: ActionVideo) => {
   // ==========load end ==========
 
   // ==========模型初始化 begin==========
-  (await segmenter.value) && segmenter.value.dispose();
+  (await segmenter) && segmenter.dispose();
   toast.close();
   await bodySegmentationInit();
   // ==========模型初始化 end==========
 };
 const changeModelType = async () => {
   dp.value && dp.value.pause();
+  (await segmenter) && segmenter.dispose();
+  segmenter = null;
+  await bodySegmentationInit();
+};
+const uploaderViedo = async (file: any) => {
+  maskImageUrl.value = "";
+  dp.value && dp.value.danmaku.clear();
+  dp.value && dp.value.pause();
+  const toast = showLoadingToast({
+    duration: 0, // 持续展示 toast
+    forbidClick: true,
+    message: "上传图片中",
+  });
+  const url = window.URL && window.URL.createObjectURL(file);
+  dp.value.switchVideo({
+    url,
+  });
+  toast.close();
   (await segmenter.value) && segmenter.value.dispose();
   segmenter.value = null;
   await bodySegmentationInit();
+  return false;
 };
-// const uploaderViedo = async (file: any) => {
-//   maskImageUrl.value = "";
-//   dp.value && dp.value.danmaku.clear();
-//   dp.value && dp.value.pause();
-//   const toast = showLoadingToast({
-//     duration: 0, // 持续展示 toast
-//     forbidClick: true,
-//     message: "上传图片中",
-//   });
-//   const url = window.URL && window.URL.createObjectURL(file);
-//   dp.value.switchVideo({
-//     url,
-//   });
-//   toast.close();
-//   (await segmenter.value) && segmenter.value.dispose();
-//   segmenter.value = null;
-//   await bodySegmentationInit();
-//   return false;
-// };
 
 // task
 const task = ref();
 
 const dpInit = () => {
-  // @ts-ignore
   dp.value = new DPlayer({
-    element:dplayer.value,
+    element: dplayer.value,
     container: dplayer.value,
     loop: true,
     volume: 0,
@@ -298,7 +297,7 @@ const dpInit = () => {
 };
 
 // tenserflow
-const segmenter = ref();
+let segmenter: any = null; // 这里不能用ref or reactive；会报错；'get' on proxy: property 'constants' is a read-only and non-configurable data property on the proxy target but the proxy did not return its actual value
 const modelType = "landscape";
 const foregroundThresholdProbability = ref(0.3);
 const randomDanmaku = () => {
@@ -329,7 +328,7 @@ const randomDanmaku = () => {
 const compressionImage = (el: any) => {
   return new Promise(async (resolve) => {
     const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     // 原始尺寸
     const elRect = el.getBoundingClientRect();
@@ -356,13 +355,13 @@ const compressionImage = (el: any) => {
     // canvas对图片进行缩放
     canvas.width = targetWidth;
     canvas.height = targetHeight;
-    if (!context) return;
+
     // 清除画布
     context.clearRect(0, 0, targetWidth, targetHeight);
     // 压缩
     context.drawImage(el, 0, 0, targetWidth, targetHeight);
 
-    context.drawImage(el, 0, 0, targetWidth, targetHeight);
+    // context.drawImage(el, 0, 0, targetWidth, targetHeight);
     const imageData = context.getImageData(0, 0, targetWidth, targetHeight);
     resolve(imageData);
   });
@@ -372,7 +371,7 @@ const recognition = async () => {
     dplayer.value && dplayer.value.querySelector(".dplayer-danmaku");
   try {
     randomDanmaku();
-    if (segmenter.value && maskOpen.value && danmaku) {
+    if (segmenter && maskOpen.value && danmaku) {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
       //压缩视频尺寸
@@ -383,10 +382,12 @@ const recognition = async () => {
         segmentBodyParts: true,
         segmentationThreshold: 1,
       };
-      const people = await segmenter.value.segmentPeople(
+
+      const people = await segmenter.segmentPeople(
         imageData,
         segmentationConfig
       );
+
       const foregroundColor = { r: 0, g: 0, b: 0, a: 0 }; //用于可视化属于人的像素的前景色 (r,g,b,a)。
       const backgroundColor = { r: 0, g: 0, b: 0, a: 255 }; //用于可视化不属于人的像素的背景颜色 (r,g,b,a)。
       const drawContour = false; //是否在每个人的分割蒙版周围绘制轮廓。
@@ -428,14 +429,16 @@ const bodySegmentationInit = async () => {
     // https://unpkg.com/@tensorflow-models/body-segmentation
     const model = bodySegmentation.SupportedModels.MediaPipeSelfieSegmentation;
     const segmenterConfig = {
-      runtime: "mediapipe",
-      modelType: modelType, //general  landscape
-      solutionPath: "https://unpkg.com/@mediapipe/selfie_segmentation",
+      runtime: "mediapipe", // or 'tfjs'
+      // modelType: modelType, //general  landscape
+      modelType: "landscape", //landscape or general
+      // solutionPath: "https://unpkg.com/@mediapipe/selfie_segmentation",
+      solutionPath:
+        "https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation",
     };
-    segmenter.value = await bodySegmentation.createSegmenter(
-      model,
-      segmenterConfig
-    );
+    segmenter = await bodySegmentation.createSegmenter(model, segmenterConfig);
+    console.log(segmenter);
+
     toast.close();
     dp.value && dp.value.notice("模型加载完成");
     dp.value && dp.value.play();
@@ -543,7 +546,9 @@ const imgLoad = (src: string) => {
             <van-icon
               name="question-o"
               @click="
-                showDialog({message:'前景阈值概率(越小物体越清晰，同时噪点也比较多)'})
+                showDialog({
+                  message: '前景阈值概率(越小物体越清晰，同时噪点也比较多)',
+                })
               "
               style="padding: 0 3px"
             />
@@ -563,17 +568,23 @@ const imgLoad = (src: string) => {
             <span>上传视频</span>
             <van-icon
               name="question-o"
-              @click="showDialog({message:'视频背景不要太乱'})"
+              @click="showDialog({ message: '视频背景不要太乱' })"
               style="padding: 0 3px"
             />
           </template>
           <template #input>
-            <!-- <van-uploader :before-read="uploaderViedo" accept="video/*" /> -->
+            <van-uploader
+              :before-read="(file:any)=>{
+              uploaderViedo(file);
+              return false;
+            }"
+              accept="video/*"
+            />
           </template>
         </van-field>
       </van-cell-group>
       <br />
-      <img v-if="maskOpen && maskImageUrl" :src="maskImageUrl" width="100%" />
+      <img v-if="maskOpen && maskImageUrl" :src="maskImageUrl" style="width:100%;" />
     </div>
   </div>
 </template>
