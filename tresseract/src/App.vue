@@ -89,8 +89,8 @@ onMounted(async () => {
   worker = await createWorker({
     logger: (m) => console.log(m),
   });
-  await worker.loadLanguage("eng+chi_sim");
-  await worker.initialize("eng+chi_sim", OEM.TESSERACT_ONLY);
+  await worker.loadLanguage("chi_sim");
+  await worker.initialize("chi_sim", OEM.DEFAULT);
   await worker.setParameters({
     tessedit_pageseg_mode: PSM.SINGLE_BLOCK,
   });
