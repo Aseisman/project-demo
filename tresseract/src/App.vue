@@ -27,7 +27,33 @@ import { Plus } from "@element-plus/icons-vue";
 import { createWorker, PSM, OEM } from "tesseract.js";
 import type { UploadProps, UploadUserFile } from "element-plus";
 
+import png1 from "@/assets/cor扫描测试1.png";
+import png2 from "@/assets/扫描件2.png";
+import png3 from "@/assets/扫描件3.png";
+import png4 from "@/assets/扫描4.png";
+import png5 from "@/assets/扫描5.png";
+
 const fileList = ref<UploadUserFile[]>([
+  {
+    name: "food.jpeg",
+    url: png1,
+  },
+  {
+    name: "food.jpeg",
+    url: png2,
+  },
+  {
+    name: "food.jpeg",
+    url: png3,
+  },
+  {
+    name: "food.jpeg",
+    url: png4,
+  },
+  {
+    name: "food.jpeg",
+    url: png5,
+  },
   {
     name: "food.jpeg",
     url: "http://200.200.169.235/uploads/1689064376171-cor扫描测试1.png",
