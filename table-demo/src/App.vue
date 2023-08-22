@@ -252,6 +252,7 @@ export default {
         5: {
           prop: "5",
           width: 150,
+          newFixed:'right',
           render: (h, scope) => {
             return (
               <span>
@@ -323,6 +324,7 @@ export default {
         创建时间: {
           prop: "创建时间",
           width: 150,
+          newFixed:'right',
           render: (h, scope) => {
             return (
               <span>
@@ -774,7 +776,7 @@ export default {
         if (this.fieldNameMap[item.id]) {
           c.push({
             label: item.name,
-            newLeftFixed: item.id == 1 || index < 2,
+            newFixed: item.id == 1 || index < 2,
             ...this.fieldNameMap[item.id],
             width: item.width || 200,
           });
@@ -783,7 +785,7 @@ export default {
           let obj = {
             label: item.name,
             width: item.width || 200,
-            newLeftFixed: index < 2,
+            newFixed: index < 2,
             prop: item.id + "",
             searchable: true,
             render: (h, scope) => {

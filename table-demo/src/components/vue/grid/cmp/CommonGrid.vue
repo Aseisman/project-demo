@@ -188,7 +188,7 @@ export default {
               this.columns.unshift({
                 type:"selection",
                 // fixed:true,
-                newLeftFixed:true,
+                newFixed:true,
                 width:40,
                 selectable:this.selectableFn
               })

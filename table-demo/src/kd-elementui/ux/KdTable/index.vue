@@ -6,7 +6,7 @@
           v-bind="item"
           :key="item.prop"
           v-on="$listeners"
-          :newLeftFixed="item.newLeftFixed"
+          :newFixed="item.newFixed"
         >
           <template slot-scope="scope">
             <slot :name="item.prop" v-bind="scope"></slot>

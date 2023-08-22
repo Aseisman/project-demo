@@ -1070,10 +1070,10 @@
   "resolved" "https://registry.npmmirror.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   "version" "2.0.4"
 
-"@moa/element-ui@^2.15.10-4":
-  "integrity" "sha512-2sRxhV+Hs5cz7CTrvZDTvlG25LJve86p9gdwHjSUrmbu+aWvgY5c/2hlAYLLUdTv+e+KSBMxUR97YdFEITm7lA=="
-  "resolved" "http://200.200.107.200:7001/@moa%2felement-ui/-/element-ui-2.15.10-4.tgz"
-  "version" "2.15.10-4"
+"@moa/element-ui@^2.15.10-6":
+  "integrity" "sha512-9XRikrGBYeODJJVMnWljc/GRB7B3Vm5N4e+JM2U62aetvclPQrze5dZfAzBXXpXRe3iSaewin99ywS+kv1R40g=="
+  "resolved" "http://200.200.107.200:7001/@moa%2felement-ui/-/element-ui-2.15.10-6.tgz"
+  "version" "2.15.10-6"
   dependencies:
     "async-validator" "~1.8.1"
     "babel-helper-vue-jsx-merge-props" "^2.0.0"
