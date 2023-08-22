@@ -37,7 +37,6 @@ export default {
     showOverflowTooltip: Boolean,
     fixed: [Boolean, String],
     newFixed: [Boolean, String],
-    newLeftFixed: [Boolean, String],
     formatter: Function,
     selectable: Function,
     reserveSelection: Boolean,
@@ -280,7 +279,7 @@ export default {
       index: this.index
     };
 
-    const basicProps = ['columnKey', 'label', 'className', 'labelClassName', 'type', 'renderHeader', 'formatter', 'fixed', 'newLeftFixed', 'newFixed', 'resizable'];
+    const basicProps = ['columnKey', 'label', 'className', 'labelClassName', 'type', 'renderHeader', 'formatter', 'fixed', 'newFixed', 'resizable'];
     const sortProps = ['sortMethod', 'sortBy', 'sortOrders'];
     const selectProps = ['selectable', 'reserveSelection'];
     const filterProps = ['filterMethod', 'filters', 'filterMultiple', 'filterOpened', 'filteredValue', 'filterPlacement'];

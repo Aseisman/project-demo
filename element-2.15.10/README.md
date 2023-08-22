@@ -3,7 +3,7 @@
 2. package.json 适配cnpm，改包名等
 3. 新建 /pcakages/date-panel/index.js 文件及其文件夹
 4. 适配 /pcakages/date-picker/panel/date.vue, 增加name，删除 handleEnter 事件等
-5. 自定义table,增加newLeftFixed参数，相关文件修改：  
+5. 自定义table,增加newFixed参数，相关文件修改：  
 `table/src/table-column.js`  
 `table/src/table-header.js`  
 `table/src/table-row.js`  

@@ -4,6 +4,7 @@ import ElCheckbox from '@moa/element-ui/packages/checkbox';
 import FilterPanel from './filter-panel.vue';
 import LayoutObserver from './layout-observer';
 import { mapStates } from './store/helper';
+import scrollbarWidth from '@moa/element-ui/src/utils/scrollbar-width';
 
 const getAllColumns = (columns) => {
   const result = [];
@@ -75,6 +76,9 @@ export default {
     const isGroup = columnRows.length > 1;
     if (isGroup) this.$parent.isGroup = true;
     let originleft = 0;
+    let originright = this.computedRealRightWidth(this.columns);
+    let gutter = scrollbarWidth();
+    this.tableLayout.scrollY && (originright += gutter);
     return (
       <table
         class="el-table__header"
@@ -100,17 +104,14 @@ export default {
                   columns.map((column, cellIndex) => {
                     let style = this.getHeaderCellStyle(rowIndex, cellIndex, columns, column);
                     let cls = this.getHeaderCellClass(rowIndex, cellIndex, columns, column);
-                    if (column.newLeftFixed) {
-                      style = this.getLeftFixedStyle(style, originleft);
-                      originleft += column.realWidth;
-                      if (Array.isArray(cls)) {
-                        cls.push('kd-table-cell-fix-left');
-                        !columns[cellIndex + 1].newLeftFixed &&
-                          cls.push('kd-table-cell-fix-left-last');
-                      } else if (typeof cls === 'string') {
-                        cls += ' kd-table-cell-fix-left';
-                        !columns[cellIndex + 1].newLeftFixed &&
-                          (cls += ' kd-table-cell-fix-left-last');
+                    if (column.newFixed) {
+                      // format style  default value ('left' or true) to 'left'
+                      if (column.newFixed === 'right') {
+                        originright -= column.realWidth;
+                        style = this.getRightFixedStyle(style, originright);
+                      } else {
+                        style = this.getLeftFixedStyle(style, originleft);
+                        originleft += column.realWidth;
                       }
                     }
                     return (<th
@@ -266,19 +267,39 @@ export default {
 
     getLeftFixedStyle(style, originleft) {
       if (typeof style === 'string') {
-        style += `position: sticky; left: ${originleft}px; z-index: 2;`;
+        style += `position: sticky; left: ${originleft}px; z-index: 3;`;
       }
       if (typeof style === 'undefined') {
-        style = `position: sticky; left: ${originleft}px; z-index: 2;`;
+        style = `position: sticky; left: ${originleft}px; z-index: 3;`;
       }
       if (typeof style === 'object') {
         let res = {
           ...style,
           'position': 'sticky',
           'left': originleft + 'px',
-          'zIndex': '2'
+          'zIndex': '3'
         };
         return res;
+      }
+      return style;
+    },
+
+    getRightFixedStyle(style, originright) {
+      switch (typeof style) {
+        case 'string':
+          style += `position: sticky; right: ${originright}px; z-index: 2;`;
+          break;
+        case 'undefined':
+          style = `position: sticky; right: ${originright}px; z-index: 2;`;
+          break;
+        case 'object':
+          let res = {
+            ...style,
+            'position': 'sticky',
+            'right': originright + 'px',
+            'zIndex': '2'
+          };
+          return res;
       }
       return style;
     },
@@ -311,6 +332,20 @@ export default {
         classes.push('is-sortable');
       }
 
+      if (column.newFixed) {
+        if (column.newFixed === 'right') {
+          classes.push('kd-table-cell-fix-right');
+          if (this.isTheFirstRightItem(columnIndex, row)) {
+            classes.push('kd-table-cell-fix-right-first');
+          }
+        } else {
+          classes.push('kd-table-cell-fix-left');
+          if (this.isTheLastLeftItem(columnIndex, row)) {
+            classes.push('kd-table-cell-fix-left-last');
+          }
+        }
+      }
+
       const headerCellClassName = this.table.headerCellClassName;
       if (typeof headerCellClassName === 'string') {
         classes.push(headerCellClassName);
@@ -328,6 +363,33 @@ export default {
       return classes.join(' ');
     },
 
+    isTheFirstRightItem(index, columns) {
+      for (let i = 0; i < index; i++) {
+        if (columns[i].newFixed === 'right') {
+          return false;
+        };
+      }
+      return true;
+    },
+
+    isTheLastLeftItem(index, columns) {
+      for (let i = index + 1; i < columns.length; i++) {
+        if (columns[i].newFixed === 'left' || columns[i].newFixed === true) {
+          return false;
+        };
+      }
+      return true;
+    },
+
+    computedRealRightWidth(columns) {
+      let width = 0;
+      for (let i = 0; i < columns.length; i++) {
+        if (columns[i].newFixed === 'right') {
+          width += columns[i].realWidth;
+        };
+      }
+      return width;
+    },
     toggleAllSelection() {
       this.store.commit('toggleAllSelection');
     },

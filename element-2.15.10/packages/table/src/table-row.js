@@ -39,6 +39,7 @@ export default {
       isExpanded
     } = this;
     let originleft = 0;
+    let originright = this.computedRealRightWidth(columns);
     return (
       <tr>
         {
@@ -76,17 +77,22 @@ export default {
             }
             let style = this.getCellStyle($index, cellIndex, row, column);
             let cls = this.getCellClass($index, cellIndex, row, column);
-            if (column.newLeftFixed) {
-              style = this.getLeftFixedStyle(style, originleft);
-              originleft += column.realWidth;
-              if (Array.isArray(cls)) {
-                cls.push('kd-table-cell-fix-left');
-                !columns[cellIndex + 1].newLeftFixed &&
-                  cls.push('kd-table-cell-fix-left-last');
-              } else if (typeof cls === 'string') {
+            if (column.newFixed) {
+              // format style  default value ('left' or true) to 'left'
+              if (column.newFixed === 'right') {
+                originright -= column.realWidth;
+                style = this.getRightFixedStyle(style, originright);
+                cls += ' kd-table-cell-fix-right';
+                if (this.isTheFirstRightItem(cellIndex, columns)) {
+                  cls += ' kd-table-cell-fix-right-first';
+                }
+              } else {
+                style = this.getLeftFixedStyle(style, originleft);
+                originleft += column.realWidth;
                 cls += ' kd-table-cell-fix-left';
-                !columns[cellIndex + 1].newLeftFixed &&
-                  (cls += ' kd-table-cell-fix-left-last');
+                if (this.isTheLastLeftItem(cellIndex, columns)) {
+                  cls += ' kd-table-cell-fix-left-last';
+                }
               }
             }
             return (
@@ -116,22 +122,66 @@ export default {
   methods: {
     getLeftFixedStyle(style, originleft) {
       if (typeof style === 'string') {
-        style += `position: sticky; left: ${originleft}px; background: white; z-index: 2;`;
+        style += `position: sticky; left: ${originleft}px; background: white; z-index: 3;`;
       }
       if (typeof style === 'undefined') {
-        style = `position: sticky; left: ${originleft}px; background: white; z-index: 2;`;
+        style = `position: sticky; left: ${originleft}px; background: white; z-index: 3;`;
       }
       if (typeof style === 'object') {
         let res = {
           ...style,
           'position': 'sticky',
           'left': originleft + 'px',
-          'zIndex': '2',
+          'zIndex': '3',
           'background': 'white'
         };
         return res;
       }
       return style;
+    },
+    getRightFixedStyle(style, originright) {
+      switch (typeof style) {
+        case 'string':
+          style += `position: sticky; right: ${originright}px; background: white; z-index: 2;`;
+          break;
+        case 'undefined':
+          style = `position: sticky; right: ${originright}px; background: white; z-index: 2;`;
+          break;
+        case 'object':
+          let res = {
+            ...style,
+            'position': 'sticky',
+            'right': originright + 'px',
+            'zIndex': '2'
+          };
+          return res;
+      }
+      return style;
+    },
+    isTheFirstRightItem(index, columns) {
+      for (let i = 0; i < index; i++) {
+        if (columns[i].newFixed === 'right') {
+          return false;
+        };
+      }
+      return true;
+    },
+    isTheLastLeftItem(index, columns) {
+      for (let i = index + 1; i < columns.length; i++) {
+        if (columns[i].newFixed === 'left' || columns[i].newFixed === true) {
+          return false;
+        };
+      }
+      return true;
+    },
+    computedRealRightWidth(columns) {
+      let width = 0;
+      for (let i = 0; i < columns.length; i++) {
+        if (columns[i].newFixed === 'right') {
+          width += columns[i].realWidth;
+        };
+      }
+      return width;
     }
   }
 };
