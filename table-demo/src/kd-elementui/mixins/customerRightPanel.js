@@ -4,7 +4,6 @@
  * todo ,这个createCustomerRightPanel参考B.CRMPanel 写的，正式使用的时候要把他们整起来，不要维护份类似代码
  *
  */
-/* eslint-disable */
 export default {
   mounted() {
     this.createCustomerRightPanel();
@@ -20,9 +19,19 @@ export default {
     showProduct(pdid) {
       this.productDetail.load(pdid);
     },
-    showSale(data, salesProp) {
-      this.saleDetail.updateProps(salesProp);
-      this.saleDetail.load(data.scid); //商机详情
+    showSale(data, salesProp, type, scidList) {
+      salesProp && this.saleDetail.updateProps(salesProp);
+      this.saleDetail.load(data.scid, type, scidList); //商机详情
+    },
+    showOrder(id, type, rpDisplay) {
+      this.orderDetail.rpDisplay = rpDisplay;
+      this.orderDetail.load(id, type);
+    },
+    showTaskDetail(data) {
+      this.taskDetail.load(data);
+      setTimeout(() => {
+        this.taskDetail.showRightItem();
+      }, 0); // TODO: 奇怪的问题，不加setTimeout，rightPanel会显示不出来
     },
     createCustomerRightPanel() {
       let ct = this.getExtCt();
@@ -32,17 +41,17 @@ export default {
           listeners: {
             scope: this,
             refresh: function () {
-              this.refresh("sale");
-            },
-          },
+              this.refresh?.('sale');
+            }
+          }
         })),
         (this.customerDetail = new B.customerMgr.FixedRightPanel({
-          //noPermitShowCusDetail: this.noPermitShowCusDetail,
+          noPermitShowCusDetail: this.noPermitShowCusDetail,
           // forceShowCusDetail: this.forceShowCusDetail,
           listeners: {
             scope: this,
             refresh: function (info) {
-              this.refresh("customer", info);
+              this.refresh?.('customer', info);
             },
             showPaymentDetail: function (id) {
               this.paymentDetail.load(id);
@@ -75,8 +84,8 @@ export default {
               this.wechatCustmDetail.showRightItem();
               this.wechatCustmDetail.getWechatTag(tagOption);
               this.wechatCustmDetail.load([id]);
-            },
-          },
+            }
+          }
         })),
         /*(this.wechatCustmDetail = new B.enterpriseWechat.WechatCustmDetail({
           listeners: {
@@ -96,9 +105,9 @@ export default {
               this.orderDetail.load(id);
             },
             refresh: function () {
-              this.refresh("payment");
-            },
-          },
+              this.refresh?.('payment');
+            }
+          }
         })),
         (this.refundDetail = new B.payment.refund.detail.Main({
           listeners: {
@@ -107,9 +116,9 @@ export default {
               this.orderDetail.load(id);
             },
             refresh: function () {
-              this.refresh("refund");
-            },
-          },
+              this.refresh?.('refund');
+            }
+          }
         })),
         (this.orderDetail = new B.orders.rightPanel.OrderRightPanel({
           listeners: {
@@ -129,57 +138,59 @@ export default {
             },
             //******//
             refresh: function () {
-              this.refresh("order");
+              this.refresh?.('order');
             },
             showContract: function (data) {
               this.contractDetail.load(data);
-            },
-          },
+            }
+          }
         })),
         (this.contractDetail = new B.contract.myContract.ContractRightPanel({
           listeners: {
             scope: this,
             refresh: function () {
-              this.refresh("contract");
+              this.refresh?.('contract');
             },
             orderDetail: function (id) {
               this.orderDetail.load(id);
-            },
-          },
+            }
+          }
         })),
         (this.productDetail = new B.product.list.ProductRightPanel({
           listeners: {
             scope: this,
             refresh: function () {
-              this.refresh("product");
+              this.refresh?.('product');
             },
             hideRightItem() {
               this.productDetail.hideRightItem();
-              this.fireEvent("hideRightItem", "productDetail");
-            },
-          },
+              this.fireEvent('hideRightItem', 'productDetail');
+            }
+          }
         })),
         (this.taskDetail = new B.task.RightPanel({
           listeners: {
             showCustomer: function (cid) {
               this.customerDetail.load(cid);
             },
-            scope: this,
-          },
+            showSale(id) {
+              this.saleDetail.load(id);
+            },
+            scope: this
+          }
         })),
         (this.consumeDetail = new B.reimbursement.PHRightPanel({
-          url: B.URL["mod_reimburse"],
+          url: B.URL['mod_reimburse'],
           hideToolbar: true,
           listeners: {
             showCustomer: function (cid) {
               this.customerDetail.load(cid);
             },
-            scope: this,
-          },
+            scope: this
+          }
         }))
       );
       ct.initialRightItem();
-    },
-  },
+    }
+  }
 };
-/* eslint-disable */

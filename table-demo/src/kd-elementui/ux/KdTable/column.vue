@@ -1,5 +1,5 @@
 <template>
-  <el-table-column v-bind="column" v-on="$listeners">
+  <el-table-column v-bind="column" v-on="$listeners" :label="column.label">
     <template slot="header" slot-scope="scope">
       <div class="cell-container">
         <free-render v-if="column._renderHeader" :scope="scope" :render="column._renderHeader" />
@@ -23,7 +23,9 @@
         </el-popover>
       </div>
     </template>
-
+    <template v-if="column.children">
+      <free-column v-for="col in column.children" :key="col.prop" :column="col" />
+    </template>
     <template slot-scope="scope">
       <component
         v-if="column.component"
@@ -33,9 +35,9 @@
       />
 
       <!-- 嵌套表格 -->
-      <template v-else-if="column.children">
+      <!-- <template v-else-if="column.children">
         <free-column v-for="col in column.children" :key="col.prop" :column="col" />
-      </template>
+      </template> -->
 
       <free-render v-else :scope="scope" :render="column.render" />
     </template>
@@ -110,13 +112,13 @@ export default {
       const props = { row, col, column };
       const handler = col.propsHandler;
       return (handler && handler(props)) || props;
-    },
+    }
   }
 };
 </script>
 <style lang="less" scoped>
 .search-container {
-  width: 32px;
+  width: 22px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -125,8 +127,9 @@ export default {
   right: 0;
   top: -5px;
   cursor: pointer;
+  margin-right: 10px;
   span {
-    // background-image: url('@/images/moa/grid/table-jiantou.svg');
+    // background-image: url('~@/images/moa/grid/table-jiantou.svg');
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
@@ -135,13 +138,15 @@ export default {
 .cell-container:hover {
   .search-container {
     span {
-      background-image: url('@/images/moa/grid/table-jiantou.svg');
+      background-image: url('~@/images/moa/grid/table-jiantou.svg');
+      background-color: #f7f7fa;
     }
   }
 }
 .search-container-active {
   span {
     background-image: url('~@/images/moa/grid/table-jiantou备份 5.svg') !important;
+    background-color: #f7f7fa;
   }
 }
 .cell-container {

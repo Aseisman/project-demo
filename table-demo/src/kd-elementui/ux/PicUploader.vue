@@ -20,13 +20,11 @@ export default {
     },
   },
   mounted() {
-    /* eslint-disable */
-    this.cmp = new SFX.upload.PicUploader({
-      renderTo: this.$el,
-      maxNum: this.maxNum,
-    });
-    /* eslint-disable */
-    this.cmp.setJsonValue(this.value);
+    // this.cmp = new SFX.upload.PicUploader({
+    //   renderTo: this.$el,
+    //   maxNum: this.maxNum,
+    // });
+    // this.cmp.setJsonValue(this.value);
   },
   destroyed() {
     if (this.cmp) {

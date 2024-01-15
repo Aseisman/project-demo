@@ -1202,6 +1202,7 @@ export default {
 .sale-panel {
   display: flex;
   flex-direction: column;
+  height: 100vh !important;
   .tbar {
     height: 30px;
   }

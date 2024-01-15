@@ -1,4 +1,5 @@
-/* eslint-disable */
+import Vue from "vue";
+
 export default {
   methods: {
     //获取弹窗组件和模块组件的extjs容器，这个对象建议做只读处理
@@ -7,55 +8,45 @@ export default {
 
       while (parent) {
         if (parent.$extCt) {
-          return parent.$extCt;
+          return parent.$extCt
         }
         parent = parent.$parent;
       }
       return null;
     },
     createWin(name, winCfg, vueCfg, useh = false) {
-      // var wins = this._wins;
+      name, winCfg, vueCfg, useh;
+      // var wins = this._wins
       // if (!wins) {
-      //   this._wins = wins = {};
+      //   this._wins = wins = {}
       // }
       // if (wins[name]) {
-      //   this.$message("创建窗口失败：名称为【" + name + "】的窗口已经存在");
+      //   SF.showErr("创建窗口失败：名称为【" + name + "】的窗口已经存在")
       //   return;
       // }
-      // // 忽略eslint检查
-      // if (winCfg instanceof Ext.Component) {
+      // if(winCfg instanceof Ext.Component){
       //   wins[name] = winCfg;
-      // } else {
-      //   if (useh) {
-      //     wins[name] = new SFX.VueWindow(
-      //       Ext.applyIf(
-      //         {
-      //           view: new Vue({
-      //             render: (h) => h(vueCfg),
-      //           }),
-      //         },
-      //         winCfg
-      //       )
-      //     );
-      //   } else {
-      //     wins[name] = new SFX.VueWindow(
-      //       Ext.applyIf(
-      //         {
-      //           view: new Vue(vueCfg),
-      //         },
-      //         winCfg
-      //       )
-      //     );
+      // }else{
+      //   if(useh){
+      //     wins[name] = new SFX.VueWindow(Ext.applyIf({
+      //       view: new Vue({
+      //         render:h=>h(vueCfg),
+      //       })
+      //     },winCfg))
+      //   }else{
+      //     wins[name] = new SFX.VueWindow(Ext.applyIf({
+      //       view: new Vue(vueCfg)
+      //     },winCfg))
       //   }
       // }
-      // wins[name].on("destroy", () => {
+      // wins[name].on("destroy",()=>{
       //   delete wins[name];
-      // });
+      // })
       // return wins[name];
     },
     // createWin中，使用h函数new vue实例时，需要用到此函数进行设值
     setVueData(name, data) {
-      const wins = this._wins;
+      const wins = this._wins
       const view = wins[name].view;
       Vue.nextTick(() => {
         const children = view.$children;
@@ -63,37 +54,37 @@ export default {
           return console.error("vue实例没有$children");
         }
         if (children.length == 1) {
-          Object.keys(data).forEach((key) => {
+          Object.keys(data).forEach(key => {
             children[0][key] = data[key];
-          });
+          })
         } else if (children.length > 1) {
           console.warn("$children有多个实例,默认传入第一个");
-          Object.keys(data).forEach((key) => {
+          Object.keys(data).forEach(key => {
             children[0][key] = data[key];
-          });
+          })
         }
-      });
+      })
     },
     // createWin中，使用h函数new vue实例时，需要用到此函数进行设定emit
     setVueEmits(name, data) {
-      const wins = this._wins;
+      const wins = this._wins
       const view = wins[name].view;
       Vue.nextTick(() => {
         const children = view.$children;
         if (!children.length) {
           return console.error("vue实例没有$children");
         }
-        Object.keys(data).forEach((key) => {
+        Object.keys(data).forEach(key => {
           children[0].$on(key, data[key]);
-        });
-      });
+        })
+      })
     },
     getWin(name) {
       if (!this._wins?.[name]) {
-        this.$message("获取窗口失败：名称为【" + name + "】的窗口不存在");
+        this.showErr("获取窗口失败：名称为【" + name + "】的窗口不存在")
         return;
       }
-      return this._wins[name];
+      return this._wins[name]
     },
     showWin(name) {
       var win = this.getWin(name);
@@ -101,34 +92,29 @@ export default {
       return win;
     },
     createRightItem(name, cfg, vueCfg) {
-      // var rightItems = this._rightItems;
+      name, cfg, vueCfg
+      // var rightItems = this._rightItems
       // if (!rightItems) {
-      //   this._rightItems = rightItems = {};
+      //   this._rightItems = rightItems = {}
       // }
       // if (rightItems[name]) {
-      //   this.$message("创建侧滑窗口失败：名称为【" + name + "】的窗口已经存在");
+      //   SF.showErr("创建侧滑窗口失败：名称为【" + name + "】的窗口已经存在")
       //   return;
       // }
-      // if (cfg instanceof Ext.Component) {
+      // if(cfg instanceof Ext.Component){
       //   rightItems[name] = cfg;
-      // } else {
-      //   rightItems[name] = new SFX.VueRightPanel(
-      //     Ext.applyIf(
-      //       {
-      //         view: new Vue(vueCfg),
-      //       },
-      //       cfg
-      //     )
-      //   );
+      // }else{
+      //   rightItems[name] = new SFX.VueRightPanel(Ext.applyIf({
+      //     view: new Vue(vueCfg)
+      //   },cfg))
       // }
-      // rightItems[name].on("destroy", () => {
+
+      // rightItems[name].on("destroy",()=>{
       //   delete rightItems[name];
-      // });
+      // })
       // let card = this.getExtCt();
-      // if (!card.initialRightItem) {
-      //   this.$message(
-      //     "弹窗和侧滑窗口里面不能创建侧滑窗口，请通过事件抛出由主界面处理"
-      //   );
+      // if(!card.initialRightItem){
+      //   SF.showErr("弹窗和侧滑窗口里面不能创建侧滑窗口，请通过事件抛出由主界面处理")
       //   return;
       // }
       // card.rightItem = card.rightItem || [];
@@ -137,10 +123,10 @@ export default {
     },
     getRightItem(name) {
       if (!this._rightItems?.[name]) {
-        this.$message("获取窗口失败：名称为【" + name + "】的窗口不存在");
+        this.showErr("获取窗口失败：名称为【" + name + "】的窗口不存在")
         return;
       }
-      return this._rightItems[name];
+      return this._rightItems[name]
     },
     showRightItem(name) {
       var item = this.getRightItem(name);
@@ -151,18 +137,14 @@ export default {
       var item = this.getRightItem(name);
       item.hideRightItem();
       return item;
-    },
+    }
   },
   destroyed() {
     Object.keys(this._wins).forEach((key) => {
       let cmp = this._wins[key];
       cmp.destroy();
     });
-    // Ext.iterate(this._wins, function (key, cmp) {
-    //   cmp.destroy();
-    // });
     this._wins = null;
-    this._rightItems = null; //rightItems的组件在容器组会自己管理销毁
-  },
+    this._rightItems = null;//rightItems的组件在容器组会自己管理销毁
+  }
 };
-/* eslint-disable */

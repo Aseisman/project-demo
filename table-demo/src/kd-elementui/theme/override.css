@@ -20,33 +20,6 @@
   box-shadow: inset 10px 0 8px -8px #4242420f;
 }
 
-
-.is-scrolling-middle .kd-table-cell-fix-right-first,
-.is-scrolling-left .kd-table-cell-fix-right-first{
-  overflow: initial !important;
-  border-left: 1px solid #f1f1f5;
-}
-.is-scrolling-middle .kd-table-cell-fix-right-first::before,
-.is-scrolling-left .kd-table-cell-fix-right-first::before {
-  position: absolute;
-  top: 0;
-  left: -31px;
-  bottom: -1px;
-  width: 30px;
-  transform: rotateY(180deg);
-  transition: box-shadow 0.3s;
-  content: '';
-  pointer-events: none;
-  box-shadow: inset 10px 0 8px -8px #4242420f;
-}
-
-.is-scrolling-middle .gutter,
-.is-scrolling-left .gutter{
-  position:sticky;
-  right: 0px;
-}
-
-
 .el-input > input {
   height: 32px !important;
   border-radius: 4px;

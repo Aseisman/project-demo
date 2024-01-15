@@ -21,20 +21,18 @@ export default {
     }
   },
   mounted() {
-    /* eslint-disable */
-   this.cmp = new SFX.upload.AttachField({
-      cls: ' fileuploader-for-vue ',
-      renderTo:this.$el,
-      maxAttachNum: this.maxNum
-    })
-    this.cmp.setJsonValue(this.value)
+  //  this.cmp = new SFX.upload.AttachField({
+  //     cls: ' fileuploader-for-vue ',
+  //     renderTo:this.$el,
+  //     maxAttachNum: this.maxNum
+  //   })
+  //   this.cmp.setJsonValue(this.value)
   },
   destroyed() {
     if(this.cmp){
       this.cmp.destroy();
     }
   }
-  /* eslint-disable */
 };
 </script>
 

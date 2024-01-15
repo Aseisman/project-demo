@@ -14,18 +14,15 @@ export default {
               let errfield = this.fields.find(
                 (field) => obj[i][0].field === field.prop
               );
-              /* eslint-disable */
-
-              SF.showTip(obj[i][0].message, () => {
-                Ext.each(errfield.$children, (item) => {
-                  if (typeof item.focus === "function") {
-                    item.focus();
-                    return false;
-                  }
-                });
-              });
-              /* eslint-disable */
-
+              errfield
+              // SF.showTip(obj[i][0].message, () => {
+              //   Ext.each(errfield.$children, (item) => {
+              //     if (typeof item.focus === "function") {
+              //       item.focus();
+              //       return false;
+              //     }
+              //   });
+              // });
               resolve(false);
               return false;
             }

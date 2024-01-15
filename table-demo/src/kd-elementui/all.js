@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from "vue";
 
 require("./override/utils/popup/popup-manager")
 require("./override/theme-chalk/date-picker.css")
