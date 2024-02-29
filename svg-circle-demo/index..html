@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于SVG的圆形动画</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        .box:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            left: 0;
+
+            transform: rotate(90deg);
+
+            background-image: conic-gradient(from 90deg, rgba(111, 232, 191, 1), rgba(255, 175, 19, 1), rgba(222, 19, 80, 1), rgba(133, 14, 205, 1));
+            mask-image: url(#ring);
+            -webkit-mask-image: url(#ring);
+            mask-size: cover;
+            mask-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<!-- 
+    svg图形绘制
+
+    SVG坐标系统：SVG坐标系统的原点位于画布的左上角，X轴向右，Y轴向下。
+
+    SVG常见的形状：矩形（rect）, 圆形（circle）, 椭圆（ellipse）, 线（line）, 多边形（polygon）,折现(polyline)
+    SVG其他元素:
+        路径（path）, 
+        图像（image）,
+        文本（text）,  
+        组（g）, 定义（defs）,引用（use）, 
+        蒙版（mask）, 遮罩（feMask）,
+        
+        注释（comment）, 样式（style）, 脚本（script）, 动画（animate）, 变换（transform）, 过滤器（filter）, 
+        
+        光栅（raster）, 光源（feDistantLight）, 点光源（fePointLight）, 聚光灯（feSpotLight）, 阴影（feDropShadow）, 轮廓（feFlood）, 合并（feMerge）, 裁剪（feCrop）,  
+    
+    SVG命令：使用路径 <path> 来画复杂的图形。路径由一系列的路径命令组成，常用的路径命令包括：M(移动到)、L(画直线)、Z(关闭路径)、H(水平线)、V(垂直线)、C(贝塞尔曲线)等。
+    
+    SVG填充效果：fill(填充 颜色等) 和 stroke(描边)
+
+    SVG显示规则：后来居上。 后面的图形覆盖在前面的图形之上。
+    
+    <svg> 元素可以通过 width 和 height设置宽高，如不设置，默认是 300px * 150px。
+    
+    图形颜色自适应：fill="currentColor", 颜色就会继承父元素
+
+    
+-->
+
+<body>
+    <svg style='height: 0;width: 0;'>
+        <defs>
+            <mask id='ring' maskContentUnits="objectBoundingBox">
+                <circle id='circle' cx=".5" cy=".5" r=".3" fill="none" stroke-dashoffset='-0.2'
+                    stroke-dasharray='0.01,1.884' stroke-linecap='round' stroke="#fff" stroke-width=".05"></circle>
+            </mask>
+        </defs>
+    </svg>
+
+    <div class='box'></div>
+    <!-- 一个隐藏的svg，实现一个带有mask-image的before伪元素，从而将svg中的mask显示出来 -->
+
+    <label for='percent'>进度</label>
+    <input value='0' type='range' min='0' max='1' step='0.01' id='percent' />
+</body>
+<script>
+    function update(percent) {
+        const circle = document.getElementById('circle')
+        const length = Math.PI * Number(circle.getAttribute('r')) * 2
+        const dash = [length * percent * 0.8, length].join(' ')
+        circle.setAttribute('stroke-dasharray', dash)
+    }
+
+    document.getElementById('percent')
+        .addEventListener('input', function () {
+            update(Number(this.value))
+        })
+
+
+
+    function trigger(value) {
+        const el = document.getElementById('percent')
+        el.value = value
+        const event = new Event('input')
+        event.target = el
+        el.dispatchEvent(event);
+        //dispatchEvent() 方法会向一个指定的事件目标派发一个Event,简单来说就是主动去触发一个事件，该事件可以是原有事件也可以是自定义事件
+        // 这里调用input事件，触发update函数，自动更新圆环动画
+    }
+
+
+    async function autoplay() {
+        let value = 0
+
+        const timer = setInterval(() => {
+            if (value > 1) return clearInterval(timer)
+            trigger(value += 0.01)
+        }, 16)
+    }
+
+    autoplay()
+</script>
+
+</html>
